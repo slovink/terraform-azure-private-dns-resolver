@@ -1,0 +1,57 @@
+---
+#
+# This is the canonical configuration for the `README.md`
+# Run `make readme` to rebuild the `README.md`
+#
+
+# Name of this project
+name : Terraform AZURE PRIVATE DNS RESOLVER
+
+# License of this project
+license: "MIT"
+
+# Canonical GitHub repo
+github_repo: git@github.com:slovink/terraform-azure-private-dns-resolver.git
+
+# Badges to display
+badges:
+  - name: "Terraform"
+    image: "https://img.shields.io/badge/Terraform-v1.7.4-green"
+    url: "https://www.terraform.io"
+  - name: "Licence"
+    image: "https://img.shields.io/badge/License-MIT-blue.svg"
+    url: "https://github.com/slovink/terraform-azure-private-dns-resolver/blob/master/LICENSE"
+
+#  description of this project
+description: |-
+  Terraform module to create Azure private-dns-resolver service resource on AZURE.
+# extra content
+include:
+  - "terraform.md"
+
+# How to use this project
+# How to use this project
+usage: |-
+  Here are some examples of how you can use this module in your inventory structure:
+  ### azure private-dns-resolver
+  ```hcl
+
+    # Basic
+
+   module "dns-private-resolver" {
+   source              = "../.."
+   name                = "app"
+   environment         = "test"
+   resource_group_name = "test-rg"
+   location            = "North Europe"
+
+   virtual_network_id = "/subscriptions/ 0a7bxxxxxxxxxxxxxxxxx818b5e/resourceGroups/example-resource-group/providers/Microsoft.Network/virtualNetworks/virtualNetworksValue"
+   dns_resolver_inbound_endpoints = [
+    # There is currently only support for two Inbound endpoints per Private Resolver.
+    {
+      inbound_endpoint_name = "inbound"
+      inbound_subnet_id     = "/subscriptions/0a7b8xxxxxxxxxxxxxxxxb5e/resourceGroups/example-resource-group/providers/Microsoft.Network/virtualNetworks/virtualNetworksValue/subnets/subnetValue"
+    }
+   ]
+  }
+  ```
