@@ -69,7 +69,7 @@ Here is an example of how you can use this module in your inventory structure:
   ```hcl
 
 module "dns-private-resolver" {
-source              = "../.."
+source              = "git@github.com:slovink/terraform-azure-private-dns-resolver.git?ref=1.0.0"
 name                = local.name
 environment         = local.environment
 resource_group_name = module.resource_group.resource_group_name
